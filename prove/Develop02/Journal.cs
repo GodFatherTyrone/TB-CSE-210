@@ -10,23 +10,9 @@ public class Journal
     string filePath;
     public void StartJournal()
     {
-
         Console.WriteLine("");
         Console.WriteLine("You are in your Journal, what would you like to do? ");
-        /*
-        -add an if statment that checks if there is a loaded file, 
-        -then tell them they hav x file loaded
-        */
-
-        /*
-        if (file is loaded)
-        {
-            Console.WriteLine($"You currently have your {} file loaded.");
-        }
-        */
-
-
-        Console.WriteLine("Enter the number associated with what you want to do. ");
+        Console.WriteLine("(Enter the number associated with what you want to do.) ");
         Console.WriteLine("0. HELP");
         Console.WriteLine("1. Load");
         Console.WriteLine("2. Display");
@@ -40,62 +26,32 @@ public class Journal
         if (responce == "0" || responce == "HELP") //Works
         {
             /*Help*/
-            /*describe what each choice does*/
-            Console.WriteLine("");
-            Console.WriteLine("This is an explination of all your options.");
-            Console.WriteLine("1. Load: Asks for a file path to load into a present List.");
-            Console.WriteLine("2. Display: Displays the List currently loaded.");
-            Console.WriteLine("3. Write: Displays a prompt and lets you write a new entry into the local list.");
-            Console.WriteLine("4. Save: Asks for a file path to save the present List into a new file.");
-            Console.WriteLine("5. Quit: Ends the program");
-
-
+            Help_Explanation();
             StartJournal();
         }
         else if (responce == "1" || responce == "Load") //works
         {
             /*Loadtextfile*/
-
-            Console.WriteLine($"Please input the filepath.");
-            filePath = Console.ReadLine();
-
-            try
-            {
-                // Read all lines from the file into a string array
-                string[] linesArray = File.ReadAllLines(filePath);
-
-                // Convert the string array to a List<string>
-                entrylist = linesArray.ToList();
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine($"Error: The file '{filePath}' was not found.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred: {ex.Message}");
-            }
-
+            Load_File_To_List();
             StartJournal();
         }
         else if (responce == "2" || responce == "Display") //works
         {
             /*Displayfiletext*/
-            /*call the function DisplayEntry() in the Class Enrtry*/
-
             foreach (string _entry in entrylist)
             {
                 Console.WriteLine($"{_entry}");
             }
-
             StartJournal();
         }
         else if (responce == "3" || responce == "Write")//works
         {
             /*Write*/
+            /*calls StartEntry() from the entry class, returns the entry*/
             Entry entry1 = new Entry();
             string _fulentry = entry1.StartEntry(out _fulentry);
 
+            /*adds returned entry to list*/
             entrylist.Add($"{_fulentry}");
 
             StartJournal();
@@ -103,21 +59,7 @@ public class Journal
         else if (responce == "4" || responce == "Save")//works
         {
             /*Savenewtextfile*/
-
-            Console.WriteLine($"Please input the filepath.");
-            filePath = Console.ReadLine();
-
-            try
-            {
-
-                File.WriteAllLines(filePath, entrylist);
-                Console.WriteLine($"List successfully saved to {filePath}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred: {ex.Message}");
-            }
-
+            Save_File_To_List();
             StartJournal();
         }
         else if (responce == "5" || responce == "Quit")//Works
@@ -131,6 +73,53 @@ public class Journal
             Console.WriteLine("Sorry, I didn't quite catch that. ");
             StartJournal();
         }
+    }//End of StartJournal()
+    public void Help_Explanation()
+    {
+        /*describe what each choice does*/
+        Console.WriteLine("");
+        Console.WriteLine("This is an explination of all your options.");
+        Console.WriteLine("1. Load: Asks for a file path to load into a present List.");
+        Console.WriteLine("2. Display: Displays the List currently loaded.");
+        Console.WriteLine("3. Write: Displays a prompt and lets you write a new entry into the local list.");
+        Console.WriteLine("4. Save: Asks for a file path to save the present List into a new file.");
+        Console.WriteLine("5. Quit: Ends the program");
     }
+    public void Load_File_To_List()
+    {
+        Console.WriteLine($"Please input the filepath.");
+        filePath = Console.ReadLine();
 
+        try
+        {
+            // Read all lines from the file into a string array
+            string[] linesArray = File.ReadAllLines(filePath);
+
+            // Convert the string array to a List<string>
+            entrylist = linesArray.ToList();
+        }
+        catch (FileNotFoundException)
+        {
+            Console.WriteLine($"Error: The file '{filePath}' was not found.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
+    }
+    public void Save_File_To_List()
+    {
+        Console.WriteLine($"Please input the filepath.");
+        filePath = Console.ReadLine();
+
+        try
+        {
+            File.WriteAllLines(filePath, entrylist);
+            Console.WriteLine($"List successfully saved to {filePath}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
+    }
 }
