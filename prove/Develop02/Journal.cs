@@ -10,68 +10,66 @@ public class Journal
     string filePath;
     public void StartJournal()
     {
-        Console.WriteLine("");
-        Console.WriteLine("You are in your Journal, what would you like to do? ");
-        Console.WriteLine("(Enter the number associated with what you want to do.) ");
-        Console.WriteLine("0. HELP");
-        Console.WriteLine("1. Load");
-        Console.WriteLine("2. Display");
-        Console.WriteLine("3. Write");
-        Console.WriteLine("4. Save");
-        Console.WriteLine("5. Quit");
-        Console.WriteLine("Please give your responce: ");
-
-        responce = Console.ReadLine();
-
-        if (responce == "0" || responce == "HELP") //Works
+        bool keepLooping = true;
+        while (keepLooping)
         {
-            /*Help*/
-            Help_Explanation();
-            StartJournal();
-        }
-        else if (responce == "1" || responce == "Load") //works
-        {
-            /*Loadtextfile*/
-            Load_File_To_List();
-            StartJournal();
-        }
-        else if (responce == "2" || responce == "Display") //works
-        {
-            /*Displayfiletext*/
-            foreach (string _entry in entrylist)
-            {
-                Console.WriteLine($"{_entry}");
-            }
-            StartJournal();
-        }
-        else if (responce == "3" || responce == "Write")//works
-        {
-            /*Write*/
-            /*calls StartEntry() from the entry class, returns the entry*/
-            Entry entry1 = new Entry();
-            string _fulentry = entry1.StartEntry(out _fulentry);
-
-            /*adds returned entry to list*/
-            entrylist.Add($"{_fulentry}");
-
-            StartJournal();
-        }
-        else if (responce == "4" || responce == "Save")//works
-        {
-            /*Savenewtextfile*/
-            Save_File_To_List();
-            StartJournal();
-        }
-        else if (responce == "5" || responce == "Quit")//Works
-        {
-            /*Quit*/
-        }
-        else                                           // Works
-        {
-            /*If provided unknown responce, restart*/
             Console.WriteLine("");
-            Console.WriteLine("Sorry, I didn't quite catch that. ");
-            StartJournal();
+            Console.WriteLine("You are in your Journal, what would you like to do? ");
+            Console.WriteLine("(Enter the number associated with what you want to do.) ");
+            Console.WriteLine("0. HELP");
+            Console.WriteLine("1. Load");
+            Console.WriteLine("2. Display");
+            Console.WriteLine("3. Write");
+            Console.WriteLine("4. Save");
+            Console.WriteLine("5. Quit");
+            Console.WriteLine("Please give your responce: ");
+
+            responce = Console.ReadLine();
+
+            if (responce == "0" || responce == "HELP") //Works
+            {
+                /*Help*/
+                Help_Explanation();
+            }
+            else if (responce == "1" || responce == "Load") //works
+            {
+                /*Loadtextfile*/
+                Load_File_To_List();
+            }
+            else if (responce == "2" || responce == "Display") //works
+            {
+                /*Displayfiletext*/
+                foreach (string _entry in entrylist)
+                {
+                    Console.WriteLine($"{_entry}");
+                }
+            }
+            else if (responce == "3" || responce == "Write")//works
+            {
+                /*Write*/
+                /*calls StartEntry() from the entry class, returns the entry*/
+                Entry entry1 = new Entry();
+                string _fulentry = entry1.StartEntry(out _fulentry);
+
+                /*adds returned entry to list*/
+                entrylist.Add($"{_fulentry}");
+            }
+            else if (responce == "4" || responce == "Save")//works
+            {
+                /*Savenewtextfile*/
+                Save_File_To_List();
+            }
+            else if (responce == "5" || responce == "Quit")//Works
+            {
+                /*Quit*/
+                keepLooping = false;
+            }
+            else                                           // Works
+            {
+                /*If provided unknown responce, restart*/
+                Console.WriteLine("");
+                Console.WriteLine("Sorry, I didn't quite catch that. ");
+            }
         }
     }//End of StartJournal()
     public void Help_Explanation()
