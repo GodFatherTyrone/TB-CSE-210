@@ -1,0 +1,26 @@
+Scripture Memorizer
+
+    Program Specification
+        What does the program do?
+            -"write a program that displays the full scripture and then hides a few words at a time until the complete scripture is hidden"
+            - 
+        What user inputs does it have?
+            - 
+        What output does it produce?
+        How does the program end?
+
+    Determine the classes
+        What are good candidates for classes in this program?
+        What are the primary responsibilities of each class?
+
+    Define class behaviors
+        What are the behaviors this class will have in order to fulfill its responsibilities? (In other words, what things should this class do?)
+
+    Define class attributes
+        What attributes does this class need to fulfill its behaviors? (In other words, what variables should this class store?)
+        What are the data types of these member variables?
+        What constructors should each class have?
+
+    Define Constructors
+        What constructors should each class have? In other words, what parameters should you pass in when creating an object of that type.
+        What other work needs to be done to set up these objects?For example, does the constructor need to run code to perform set up tasks, like creating lists, iterating through variables, etc.

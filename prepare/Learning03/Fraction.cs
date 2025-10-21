@@ -13,7 +13,6 @@ public class Fraction
         _top = numerator;
         _bottom = 1;
     }
-
     public Fraction(int numerator, int denominator) //constructors t,b
     {
         _top = numerator;
