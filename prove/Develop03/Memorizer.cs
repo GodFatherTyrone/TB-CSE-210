@@ -2,24 +2,20 @@ public class Memorizer
 {
     public async Task Start_Memorizer()
     {
-
         //private local variables
         string _name_chapter_verse;
-        SDatabase db;
         Scripture scripture1;
         string _endresponse;
         string _count;
 
         Console.Clear();
-        Console.WriteLine("Which scripture (Only from the Bible) would you like to practise with: ");
+        Console.WriteLine("Which scriptures (From the Bible or Book of Mormon) would you like to practice with? ");
+        Console.WriteLine("Example: 'John 1:1' or 'John 1:1-21': ");
         _name_chapter_verse = Console.ReadLine();
 
-        db = new SDatabase(_name_chapter_verse);
-        // Load the verse from the online API, into the SDatabase object
-        await db.LoadVerseAsync();
+        scripture1 = new Scripture(_name_chapter_verse);
+        await scripture1.Load_Scripture_From_Name();
 
-        scripture1 = new Scripture(db.Get_Name(), db.Get_Scripture());
-        
         Console.Clear();
         //loop intill response is "quit"
         do

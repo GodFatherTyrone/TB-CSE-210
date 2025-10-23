@@ -23,6 +23,6 @@ In addition your program must:
 */
 
 /*
-I was able to make the randome generater not be able to choose the same word twice.
-I was able to get an api to get the scripture needed. 
+I was able to make the random generater not be able to choose already hidden words.
+I learned how to use an api. And created an interation to choose which api to use.
 */
