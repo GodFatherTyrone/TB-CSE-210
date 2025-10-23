@@ -10,6 +10,11 @@ public class Scripture
     public Scripture()
     {
         _Sname = "scripture name";
+        _Obj_word = new List<Word>();
+    }
+    public Scripture(string name)
+    {
+        _Sname = name;
         _Obj_word = new List<Word>();        
     }
     public Scripture(string name, string wholescripture)
@@ -19,8 +24,7 @@ public class Scripture
         foreach (string _word in wholescripture.Split(' '))
         {
             _Obj_word.Add(new Word(_word));
-        }
-        
+        }   
     }
     public string Display_Scripture()
     {
@@ -69,7 +73,6 @@ public class Scripture
                 //usednumbers[number]= _Obj_word[number].Count_Word();
                 //switch bool used value
                 _Obj_word[number].Switch_Bool();
-
             }
         }
     }

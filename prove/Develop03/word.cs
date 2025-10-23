@@ -17,12 +17,12 @@ public class Word
     {
         _word = word;
         _used = false;
-        int _count = word.Count();
-        _blankword = "";
 
+        int _count = word.Count();
+        //_blankword = "";
         for (int j = 0; j < _count; j++)
         {
-            _blankword = _blankword + "_";
+            _blankword += "_";
         }
     }
     public string Get_Word()//displays the word, 

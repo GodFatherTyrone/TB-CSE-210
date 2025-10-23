@@ -1,14 +1,17 @@
 using System;
 using System.Runtime.InteropServices;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Text.Json;
 
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         Console.WriteLine("Hello Develop03 World!");
 
         Memorizer memorizer1 = new Memorizer();
-        memorizer1.StartMemorizer();
+        await memorizer1.Start_Memorizer();
     }
 }
 /*
@@ -20,16 +23,6 @@ In addition your program must:
 */
 
 /*
-To Do:
-- Add multiple constrictors:
-    -idk
-- Add another class:
-    -Move some stuff around
-    -scripture finder?
-        -Package ‘scriptuRs’ or "https://github.com/andrewheiss/scriptuRs"
-
-*/
-
-/*
-I was able to make the randome generater not blank the same words again.
+I was able to make the randome generater not be able to choose the same word twice.
+I was able to get an api to get the scripture needed. 
 */
