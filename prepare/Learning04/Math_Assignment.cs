@@ -2,7 +2,7 @@ public class Math_Assignment : Assignment
 {
     private string _textbookSection;
     private string _problems;
-    public Math_Assignment(string name, string topic) : base(name, topic)
+    public Math_Assignment() : base()
     {
         _textbookSection = "Unknown Booksection";
         _problems = "Problems Unknown";

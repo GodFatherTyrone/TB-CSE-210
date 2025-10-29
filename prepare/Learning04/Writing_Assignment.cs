@@ -1,7 +1,7 @@
 public class Writing_Assignment : Assignment 
 {
     private string _title;
-    public Writing_Assignment(string name, string topic) : base(name, topic)
+    public Writing_Assignment() : base()
     {
         _title = "Unknown Title";
     }
