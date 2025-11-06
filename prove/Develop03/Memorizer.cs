@@ -21,7 +21,12 @@ public class Memorizer
         do
         {
             //display list of scripture words & returns if they want to quit
-            _endresponse = scripture1.Display_Scripture();
+            scripture1.Display_Scripture();
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Press enter to continue or type 'quit' to finish: ");
+            _endresponse = Console.ReadLine();
+            
             //Prompt Stop
 
 
