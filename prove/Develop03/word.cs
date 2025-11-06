@@ -27,15 +27,18 @@ public class Word
     }
     public string Get_Word()//displays the word, 
     {
-        return _word;
+        if (_used == true)
+        {
+            return _blankword;
+        }
+        else
+        {
+            return _word;
+        }
     }
     public bool Get_Used()//displays the used, 
     {
         return _used;
-    }
-    public string Get_Blankword()
-    {
-        return _blankword;
     }
     public void Switch_Bool()
     {

@@ -65,15 +65,7 @@ public class Scripture
         Console.Write($"{_Sname} ");
         foreach (Word word in _Obj_word)
         {
-            if (word.Get_Used() == true)
-            {
-                Console.Write($"{word.Get_Blankword()} ");
-            }
-            else
-            {
-                Console.Write($"{word.Get_Word()} ");
-            }
-
+            Console.Write($"{word.Get_Word()} ");
         }
 
         Console.WriteLine("");
