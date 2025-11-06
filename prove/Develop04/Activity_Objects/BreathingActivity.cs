@@ -1,3 +1,4 @@
+namespace Activity_Objects;
 public class BreathingActivity : Activity
 {
     public void Start_Breathing_Activity()

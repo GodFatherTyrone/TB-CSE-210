@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+namespace Activity_Objects;
 
 public class ReflectingActivity : Activity
 {

@@ -1,3 +1,4 @@
+namespace Activity_Objects;
 public class Activity
 {
     private string _title = "Unchanged";
@@ -41,7 +42,7 @@ public class Activity
         Console.WriteLine(_instructions);
         Console.WriteLine("");
     }
-    
+
     private List<string> _animationstrings = new List<string> { "|", "/", "-", "\\" };
     public void Animate_Spinner(int seconds)
     {

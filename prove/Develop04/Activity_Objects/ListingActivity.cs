@@ -1,3 +1,4 @@
+namespace Activity_Objects;
 public class ListingActivity : Activity
 {
     private List<string> _lprompts = new List<string>
