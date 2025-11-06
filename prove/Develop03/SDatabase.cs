@@ -21,50 +21,79 @@ public class SDatabase
     // Async factory method to create SDatabase from API
     public async Task LoadBibleVerseAsync()
     {
-        string encodedName = Uri.EscapeDataString(_name);
-        string url = $"https://bible-api.com/{encodedName}?translation=kjv";
-
-        string jsonResponse = await client.GetStringAsync(url);
-
-        using var doc = JsonDocument.Parse(jsonResponse);
-        var root = doc.RootElement;
-
-        if (root.TryGetProperty("verses", out JsonElement verses))
+        try
         {
-            string verseText = "";
-            foreach (var v in verses.EnumerateArray())
+            string encodedName = Uri.EscapeDataString(_name);
+            string url = $"https://bible-api.com/{encodedName}?translation=kjv";
+
+            string jsonResponse = await client.GetStringAsync(url);
+
+            using var doc = JsonDocument.Parse(jsonResponse);
+            var root = doc.RootElement;
+
+            if (root.TryGetProperty("verses", out JsonElement verses))
             {
-                verseText += v.GetProperty("text").GetString();
+                string verseText = "";
+                foreach (var v in verses.EnumerateArray())
+                {
+                    verseText += v.GetProperty("text").GetString();
+                }
+                _content = verseText.Trim();
             }
-            _content = verseText.Trim();
+            else
+            {
+                _content = "Bible verse not found.";
+            }
         }
-        else
+        catch
         {
-            _content = "Bible verse not found.";
+            Exit_Program();
         }
     }
     public async Task LoadBookofMormonVerseAsync()
     {
-        string encodedName = Uri.EscapeDataString(_name);
-        string url = $"https://api.nephi.org/scriptures/?q={encodedName}&format=json";
-
-        string jsonResponse = await client.GetStringAsync(url);
-
-        using var doc = JsonDocument.Parse(jsonResponse);
-        var root = doc.RootElement;
-
-        if (root.TryGetProperty("scriptures", out JsonElement scriptures))
+        try
         {
-            string verseText = "";
-            foreach (var v in scriptures.EnumerateArray())
+            string encodedName = Uri.EscapeDataString(_name);
+            string url = $"https://api.nephi.org/scriptures/?q={encodedName}&format=json";
+
+            string jsonResponse = await client.GetStringAsync(url);
+
+            using var doc = JsonDocument.Parse(jsonResponse);
+            var root = doc.RootElement;
+
+            if (root.TryGetProperty("scriptures", out JsonElement scriptures))
             {
-                verseText += v.GetProperty("text").GetString();
+                string verseText = "";
+                foreach (var v in scriptures.EnumerateArray())
+                {
+                    verseText += v.GetProperty("text").GetString();
+                }
+                _content = verseText.Trim();
             }
-            _content = verseText.Trim();
+            else
+            {
+                _content = "Book of Mormon verse not found.";
+            }
         }
-        else
+        catch
         {
-            _content = "Book of Mormon verse not found.";
+            Exit_Program();
         }
+    }
+    public void Exit_Program()
+    {
+        Console.Clear();
+        Console.WriteLine("");
+        Console.WriteLine("Something went wrong.");
+        Console.WriteLine("Either the scripture you entered does not exist or the API site is down.");
+        Console.WriteLine("Please restart the program.");
+        for (int i = 5; i > 0; i--) //counts down (per sec) from i
+        {
+            Console.Write(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
+        Environment.Exit(0);
     }
 }
