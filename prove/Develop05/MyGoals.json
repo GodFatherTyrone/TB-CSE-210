@@ -1,0 +1,27 @@
+{
+  "TotalPointsEarned": 45,
+  "ListofGoals": [
+    {
+      "$type": "Simple",
+      "_goalcompleted": true,
+      "_goalname": "Jack",
+      "_goaldescription": "He is Jack",
+      "_goalpoints": 3
+    },
+    {
+      "$type": "Eternal",
+      "_goalname": "Jill",
+      "_goaldescription": "She is Jill",
+      "_goalpoints": 4
+    },
+    {
+      "$type": "Checklist",
+      "_goalstreak": 8,
+      "_goalcompletion": 3,
+      "_goalbonuspoints": 15,
+      "_goalname": "Study book",
+      "_goaldescription": "I need to complete 3 chapters of book",
+      "_goalpoints": 5
+    }
+  ]
+}
